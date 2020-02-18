@@ -1196,3 +1196,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paddle: {fileID: 373710397}
+  push: {x: 2, y: 15}
