@@ -9,8 +9,13 @@ public class Ball : MonoBehaviour
     private Vector2 paddleToBallVector;
     private Rigidbody2D rb;
     private bool hasStarted = false;
+    private AudioSource audioSource;
 
-    private void Awake() => rb = GetComponent<Rigidbody2D>();
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void Start() => paddleToBallVector = transform.position - paddle.transform.position;
 
@@ -31,6 +36,14 @@ public class Ball : MonoBehaviour
         {
             rb.velocity = push;
             hasStarted = true;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (hasStarted)
+        {
+            audioSource.Play();
         }
     }
 }
