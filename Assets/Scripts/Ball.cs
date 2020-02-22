@@ -5,6 +5,7 @@ public class Ball : MonoBehaviour
 {
     [SerializeField] private Paddle paddle;
     [SerializeField] private Vector2 push = new Vector2(2f, 15f);
+    [SerializeField] private AudioClip[] ballSounds;
 
     private Vector2 paddleToBallVector;
     private Rigidbody2D rb;
@@ -43,7 +44,7 @@ public class Ball : MonoBehaviour
     {
         if (hasStarted)
         {
-            audioSource.Play();
+            audioSource.PlayOneShot(ballSounds[UnityEngine.Random.Range(0, ballSounds.Length)]);
         }
     }
 }
