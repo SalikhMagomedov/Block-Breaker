@@ -135,10 +135,10 @@ MonoBehaviour:
   paddle: {fileID: 0}
   push: {x: 2, y: 15}
   ballSounds:
-  - {fileID: 8300000, guid: 79a06a227b070324b8f0846e0ce845bc, type: 3}
   - {fileID: 8300000, guid: 24904c02c70f19c49aa1541d5f270220, type: 3}
   - {fileID: 8300000, guid: d5cb2dde05bba4745a54e13296cc5763, type: 3}
   - {fileID: 8300000, guid: 66dd626346b2f72438e493ef95fe17da, type: 3}
+  - {fileID: 8300000, guid: f21f7b44ae1202a4b8d5091cc69dad7e, type: 3}
 --- !u!82 &9185448062391565573
 AudioSource:
   m_ObjectHideFlags: 0
