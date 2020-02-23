@@ -4,8 +4,18 @@ public class Level : MonoBehaviour
 {
     [SerializeField] private int breakableBlocks;
 
-    public void CountBreakableBlocks()
+    SceneLoader sceneLoader;
+
+    private void Awake() => sceneLoader = FindObjectOfType<SceneLoader>();
+
+    public void CountBreakableBlocks() => breakableBlocks++;
+
+    public void BlockDestroyed()
     {
-        breakableBlocks++;
+        breakableBlocks--;
+        if (breakableBlocks <= 0)
+        {
+            sceneLoader.LoadNextScene();
+        }
     }
 }

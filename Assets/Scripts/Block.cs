@@ -6,11 +6,14 @@ public class Block : MonoBehaviour
 
     private Level level;
 
-    private void Awake() => FindObjectOfType<Level>().CountBreakableBlocks();
+    private void Awake() => level = FindObjectOfType<Level>();
+
+    private void Start() => level.CountBreakableBlocks();
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         AudioSource.PlayClipAtPoint(breakSound, Camera.main.transform.position);
+        level.BlockDestroyed();
         Destroy(gameObject);
     }
 }
