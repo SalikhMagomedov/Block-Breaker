@@ -4,7 +4,6 @@ public class Block : MonoBehaviour
 {
     [SerializeField] private AudioClip breakSound;
     [SerializeField] private GameObject blockSparklesVfx;
-    [SerializeField] private int maxHits;
     [SerializeField] private Sprite[] hitSprites;
 
     private Level level;
@@ -32,6 +31,7 @@ public class Block : MonoBehaviour
         if (CompareTag("Breakable"))
         {
             timesHit++;
+            var maxHits = hitSprites.Length + 1;
             if (timesHit >= maxHits)
             {
                 AudioSource.PlayClipAtPoint(breakSound, Camera.main.transform.position);
@@ -45,7 +45,15 @@ public class Block : MonoBehaviour
             }
             else
             {
-                spriteRenderer.sprite = hitSprites[timesHit - 1];
+                var spriteIndex = timesHit - 1;
+                if (hitSprites[spriteIndex] != null)
+                {
+                    spriteRenderer.sprite = hitSprites[spriteIndex];
+                }
+                else
+                {
+                    Debug.LogError("Block sprite is missing from array " + gameObject.name);
+                }
             }
         }
     }
