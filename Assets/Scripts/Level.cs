@@ -8,7 +8,7 @@ public class Level : MonoBehaviour
 
     private void Awake() => sceneLoader = FindObjectOfType<SceneLoader>();
 
-    public void CountBreakableBlocks() => breakableBlocks++;
+    public void CountBlocks() => breakableBlocks++;
 
     public void BlockDestroyed()
     {

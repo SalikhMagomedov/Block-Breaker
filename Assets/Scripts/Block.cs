@@ -14,16 +14,25 @@ public class Block : MonoBehaviour
         gameStatus = FindObjectOfType<GameSession>();
     }
 
-    private void Start() => level.CountBreakableBlocks();
+    private void Start()
+    {
+        if (CompareTag("Breakable"))
+        {
+            level.CountBlocks();
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        AudioSource.PlayClipAtPoint(breakSound, Camera.main.transform.position);
-        level.BlockDestroyed();
-        gameStatus.AddToScore();
-        var sparkles = Instantiate(blockSparklesVfx, transform.position, transform.rotation);
-        Destroy(sparkles, 1f);
+        if (CompareTag("Breakable"))
+        {
+            AudioSource.PlayClipAtPoint(breakSound, Camera.main.transform.position);
+            var sparkles = Instantiate(blockSparklesVfx, transform.position, transform.rotation);
+            Destroy(sparkles, 1f);
+            level.BlockDestroyed();
+            gameStatus.AddToScore();
 
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
     }
 }
