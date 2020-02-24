@@ -46,7 +46,7 @@ public class Block : MonoBehaviour
             else
             {
                 var spriteIndex = timesHit - 1;
-                if (hitSprites[spriteIndex] != null)
+                if (timesHit <= hitSprites.Length && hitSprites[spriteIndex] != null)
                 {
                     spriteRenderer.sprite = hitSprites[spriteIndex];
                 }
