@@ -5,15 +5,18 @@ public class Block : MonoBehaviour
     [SerializeField] private AudioClip breakSound;
     [SerializeField] private GameObject blockSparklesVfx;
     [SerializeField] private int maxHits;
+    [SerializeField] private Sprite[] hitSprites;
 
     private Level level;
     private GameSession gameStatus;
     private int timesHit;
+    private SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
         level = FindObjectOfType<Level>();
         gameStatus = FindObjectOfType<GameSession>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
@@ -39,6 +42,10 @@ public class Block : MonoBehaviour
                 gameStatus.AddToScore();
 
                 Destroy(gameObject);
+            }
+            else
+            {
+                spriteRenderer.sprite = hitSprites[timesHit - 1];
             }
         }
     }
