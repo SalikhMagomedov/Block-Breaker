@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 using TMPro;
 
-public class GameStatus : MonoBehaviour
+public class GameSession : MonoBehaviour
 {
-    [SerializeField][Range(0f, 10f)] private float gameSpeed = 1f;
+    [SerializeField] [Range(0f, 10f)] private float gameSpeed = 1f;
     [SerializeField] private int pointsPerBlockDestroyed = 83;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private int currentScore = 0;
 
     private void Awake()
     {
-        int gameStatusCount = FindObjectsOfType<GameStatus>().Length;
+        int gameStatusCount = FindObjectsOfType<GameSession>().Length;
         if (gameStatusCount > 1)
         {
             gameObject.SetActive(false);
@@ -33,8 +33,7 @@ public class GameStatus : MonoBehaviour
         UpdateScoreText();
     }
 
-    private void UpdateScoreText()
-    {
-        scoreText.text = currentScore.ToString();
-    }
+    public void ResetGame() => Destroy(gameObject);
+
+    private void UpdateScoreText() => scoreText.text = currentScore.ToString();
 }

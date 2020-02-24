@@ -5,12 +5,12 @@ public class Block : MonoBehaviour
     [SerializeField] private AudioClip breakSound;
 
     private Level level;
-    private GameStatus gameStatus;
+    private GameSession gameStatus;
 
     private void Awake()
     {
         level = FindObjectOfType<Level>();
-        gameStatus = FindObjectOfType<GameStatus>();
+        gameStatus = FindObjectOfType<GameSession>();
     }
 
     private void Start() => level.CountBreakableBlocks();
